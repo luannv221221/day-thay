@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .err {
+            border: 1px solid red;
+        }
+
+        .form-group {
+            width: 200px;
+            background-color: red;
+            position: relative;
+        }
+
+        input {
+            padding: 7px;
+            width: 100%;
+        }
+
+        .eye {
+            position: absolute;
+            right: 3px;
+            top: 10px;
+            opacity: 0;
+        }
+    </style>
+    <!-- nhúng thông qua download  -->
+    <!-- <link rel="stylesheet" href="fontawesome-5.15.4/css/all.min.css"> -->
+    <!-- nhung online cdn  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
+
+<body>
+
+    <form action="" method="post">
+        <label for="">UserName</label>
+        <div class="form-group">
+            <input type="text" name="" id="UserName" class="">
+        </div>
+        <span style="color: red; opacity: 0;" id="errUserName">Trường này không rỗng</span>
+        <br>
+        <label for="">Password</label>
+        <div class="form-group">
+            <input type="password" name="" id="password" onblur="validatePassword()" oninput="handEye()">
+            <i class="fas fa-eye-slash eye" id="_eye" onclick="togglePass()"> </i>
+        </div>
+        <span style="color: red; opacity: 0;" id="errPassword">Trường này không rỗng</span>
+        <br>
+        <button type="button" onclick="validate()">Login</button>
+    </form>
+</body>
+<script>
+   
+    function togglePass(){
+        let password = document.getElementById("password");
+        let _eye = document.getElementById("_eye");
+        if(password.getAttribute("type") == "password"){
+            password.setAttribute("type","text");
+            _eye.classList.remove("fa-eye-slash");
+            _eye.classList.add("fa-eye");
+            
+        } else {
+            password.setAttribute("type","password");
+            _eye.classList.remove("fa-eye");
+            _eye.classList.add("fa-eye-slash");
+        }
+        
+    }
+     // let flag = true;
+    // function togglePass(){
+    //     let password = document.getElementById("password");
+    //     if(flag){
+    //         password.setAttribute("type","text");
+    //         flag = false
+    //     } else {
+    //         password.setAttribute("type","password");
+    //         flag = true;
+    //     }
+        
+    // }
+    function handEye() {
+        let password = document.getElementById("password");
+        if(password.value != ''){
+            document.getElementById("_eye").style.opacity = 1;
+        } else{
+            document.getElementById("_eye").style.opacity = 0;
+        }
+    }
+    function validate() {
+        let userName = document.getElementById("UserName");
+        if (userName.value == "") {
+            console.log("Test");
+            document.getElementById("errUserName").style.opacity = 1;
+            // thêm class vào phần tử html 
+            userName.classList.add("err");
+        } else {
+            document.getElementById("errUserName").style.opacity = 0;
+            // xóa bỏ class khỏi phần tử html 
+            userName.classList.remove("err");
+        }
+
+    }
+    function validatePassword() {
+        let password = document.getElementById("password");
+        if (password.value == '') {
+            document.getElementById("errPassword").style.opacity = 1;
+            password.classList.add("err");
+        } else {
+            document.getElementById("errPassword").style.opacity = 0;
+            password.classList.remove("err");
+        }
+    }
+
+</script>
+
+</html>

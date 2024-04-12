@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .back-to-top{
+            background-color: red;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            color: #fff;
+            font-size: 30px;
+            /* line-height: 50px; */
+            display: flex; 
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            right: 10px;
+            bottom: 10px;
+            opacity: 0;
+            cursor: pointer;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+</head>
+<body>
+    <div style="width: 10px; font-size: 39px;">
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequuntur, eum fuga autem ullam dolorem
+            
+            praesentium porro unde possimus voluptatum esse deleniti soluta fugit? Optio aspernatur eius voluptatum perspiciatis, aliquam perferendis!</p>
+    </div>
+    <div class="back-to-top" id="top-btn" onclick="backToTop()">
+        <i class="fa-solid fa-up-long"></i>
+    </div>
+</body>
+<script>
+    window.onscroll = function(){
+        scrollTopFunction();
+    }
+    function scrollTopFunction(){
+        let _height = document.documentElement.scrollTop;
+        if(_height > 400){
+            document.getElementById("top-btn").style.opacity=1
+        } else {
+            document.getElementById("top-btn").style.opacity=0
+        }
+    }
+    function backToTop(){
+        window.scrollTo({top: 0, behavior: 'smooth',duration:5000});
+    }
+</script>
+</html>
